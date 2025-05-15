@@ -1,0 +1,8 @@
+export { default as MainPages } from "./MainPages";
+export { default as Information } from "./Information";
+export { default as Education } from "./Education";
+export { default as Results } from "./Results";
+export { default as Sertificate } from "./Sertificate";
+export { default as BeginnerTest } from "./BeginnerTest";
+export { default as RegularTest } from "./RegularTest";
+export { default as LastTest } from "./LastTest";
