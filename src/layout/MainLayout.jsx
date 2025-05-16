@@ -4,17 +4,25 @@ import { Outlet } from "react-router";
 
 function MainLayout() {
   const [isOpen, setIsOpen] = useState(true);
-  3;
   return (
-    <div className="w-full flex">
+    <div className="w-full flex relative">
       <aside
-        className={`${isOpen ? "w-2/10" : "w-[5%]"}  h-screen bg-[#2964c2]`}
+        className={`absolute md:relative transition-all duration-300 ${
+          isOpen
+            ? "md:w-2/10 hidden md:block"
+            : "md:w-[5%] w-8/10 z-999 left-0 block"
+        } h-screen bg-[#2964c2] ${!isOpen ? "block" : "hidden"} md:block`}
       >
         <Navbar setIsOpen={setIsOpen} isOpen={isOpen} />
       </aside>
-      <main className={`${isOpen ? "w-8/10" : "w-[95%]"} bg-[#E8F1FF]`}>
+
+      <main
+        className={`transition-all duration-300 ${
+          isOpen ? "md:w-8/10 w-full" : "md:w-[95%] w-full"
+        } bg-[#E8F1FF]`}
+      >
         <header>
-          <Header />
+          <Header isOpen={isOpen} setIsOpen={setIsOpen} />
         </header>
         <section className="w-[90%] mx-auto">
           <Outlet />

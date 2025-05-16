@@ -15,8 +15,8 @@ function Navbar({ setIsOpen, isOpen }) {
         <div className="flex items-center gap-3">
           <img src={psyedu} alt="psyedu" className="size-22" />
           <h1
-            className={`${
-              isOpen ? "block" : "hidden"
+            className={`transition-all duration-300 ${
+              isOpen ? "md:block hidden" : "md:hidden block"
             } font-medium text-sm w-[60%]`}
           >
             Psixologlarni uzluksiz kasbiy rivojlantirish platformasi
@@ -36,17 +36,25 @@ function Navbar({ setIsOpen, isOpen }) {
           } w-14 h-18 rounded-3xl flex justify-center items-center absolute -right-13 bg-[#2964C2] -z-5 transition-all duration-500`}
           onClick={() => setIsOpen(!isOpen)}
         >
-          <FaAngleDoubleRight />
+          <FaAngleDoubleRight
+            className={`${
+              isOpen ? "rotate-180" : "md:rotate-0 rotate-180"
+            } transition-all duration-300`}
+          />
         </div>
       </div>
 
-      <section className="w-full py-10 flex flex-col gap-4">
+      <section className="w-full md:py-10 py-6 flex flex-col md:gap-4 gap-2">
         <NavLink
           to={"/"}
           className="flex items-center gap-4 w-full bg-[#3475DB] p-3 rounded-md shadow"
         >
           <IoHomeOutline className="text-white size-6" />
-          <p className={`${isOpen ? "block" : "hidden"} font-medium text-lg`}>
+          <p
+            className={`${
+              isOpen ? "md:block hidden" : "md:hidden block"
+            } font-medium text-lg`}
+          >
             Bosh sahifa
           </p>
         </NavLink>
@@ -55,7 +63,11 @@ function Navbar({ setIsOpen, isOpen }) {
           className="flex items-center gap-4 w-full bg-[#3475DB] p-3 rounded-md shadow"
         >
           <BsPersonGear className="text-white size-6" />
-          <p className={`${isOpen ? "block" : "hidden"} font-medium text-lg`}>
+          <p
+            className={`${
+              isOpen ? "md:block hidden" : "md:hidden block"
+            } font-medium text-lg`}
+          >
             Shaxsiy ma'lumotlar
           </p>
         </NavLink>
@@ -64,7 +76,11 @@ function Navbar({ setIsOpen, isOpen }) {
           className="flex items-center gap-4 w-full bg-[#3475DB] p-3 rounded-md shadow"
         >
           <FaUserGraduate className="text-white size-6" />
-          <p className={`${isOpen ? "block" : "hidden"} font-medium text-lg`}>
+          <p
+            className={`${
+              isOpen ? "md:block hidden" : "md:hidden block"
+            } font-medium text-lg`}
+          >
             Ta'lim
           </p>
         </NavLink>
@@ -73,7 +89,11 @@ function Navbar({ setIsOpen, isOpen }) {
           className="flex items-center gap-4 w-full bg-[#3475DB] p-3 rounded-md shadow"
         >
           <CiMedal className="text-white size-6" />
-          <p className={`${isOpen ? "block" : "hidden"} font-medium text-lg`}>
+          <p
+            className={`${
+              isOpen ? "md:block hidden" : "md:hidden block"
+            } font-medium text-lg`}
+          >
             Natijalar
           </p>
         </NavLink>
@@ -82,14 +102,22 @@ function Navbar({ setIsOpen, isOpen }) {
           className="flex items-center gap-4 w-full bg-[#3475DB] p-3 rounded-md shadow"
         >
           <GiDiploma className="text-white size-6" />
-          <p className={`${isOpen ? "block" : "hidden"} font-medium text-lg`}>
+          <p
+            className={`${
+              isOpen ? "md:block hidden" : "md:hidden block"
+            } font-medium text-lg`}
+          >
             Sertifikatlar
           </p>
         </NavLink>
         <div className="w-full group">
-          <div className="flex items-center gap-4 w-full bg-[#3475DB] p-3 rounded-md shadow mb-2 relative">
+          <div className="flex items-center md:gap-4 gap-2 w-full bg-[#3475DB] p-3 rounded-md shadow mb-2 relative">
             <FaChalkboardUser className="text-white size-6" />
-            <p className={`${isOpen ? "block" : "hidden"} font-medium text-lg`}>
+            <p
+              className={`${
+                isOpen ? "md:block hidden" : "md:hidden block"
+              } font-medium text-lg`}
+            >
               Testlar
             </p>
           </div>
@@ -97,19 +125,19 @@ function Navbar({ setIsOpen, isOpen }) {
             <div className="flex flex-col w-full bg-[#3475DB] p-3 rounded-md shadow">
               <NavLink
                 to={"/beginner-test"}
-                className="font-medium hover:bg-[#2c63bb] p-3 rounded-md"
+                className="font-medium hover:bg-[#2c63bb] md:p-3 p-2 rounded-md"
               >
                 Boshlang'ich test
               </NavLink>
               <NavLink
                 to={"/regular-test"}
-                className="font-medium hover:bg-[#2c63bb] p-3 rounded-md"
+                className="font-medium hover:bg-[#2c63bb] md:p-3 p-2  rounded-md"
               >
                 Doimiy test
               </NavLink>
               <NavLink
                 to={"/last-test"}
-                className="font-medium hover:bg-[#2c63bb] p-3 rounded-md"
+                className="font-medium hover:bg-[#2c63bb] md:p-3 p-2  rounded-md"
               >
                 Yakuniy test
               </NavLink>
