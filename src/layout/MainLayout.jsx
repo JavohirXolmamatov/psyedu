@@ -1,30 +1,28 @@
-import React, { useState } from "react";
-import { Footer, Header, Navbar } from "../components";
-import { Outlet } from "react-router";
+import React, { useState } from 'react'
+import { Footer, Header, Navbar } from '../components'
+import { Outlet } from 'react-router'
 
 function MainLayout() {
-  const [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(true)
   return (
-    <div className="w-full flex relative">
+    <div className="w-full flex relative overflow-hidden h-screen">
       <aside
         className={`absolute md:relative transition-all duration-300 ${
-          isOpen
-            ? "md:w-2/10 hidden md:block"
-            : "md:w-[5%] w-8/10 z-999 left-0 block"
-        } h-screen bg-[#2964c2] ${!isOpen ? "block" : "hidden"} md:block`}
+          isOpen ? 'md:w-3/12 hidden md:block' : 'md:w-1/12 w-8/10 z-999 left-0 block'
+        } h-screen bg-[#2964c2] ${!isOpen ? 'block' : 'hidden'} md:block`}
       >
         <Navbar setIsOpen={setIsOpen} isOpen={isOpen} />
       </aside>
 
       <main
-        className={`transition-all duration-300 ${
-          isOpen ? "md:w-8/10 w-full" : "md:w-[95%] w-full"
+        className={`transition-all duration-300 overflow-y-auto ${
+          isOpen ? 'md:w-9/12 w-full' : 'md:w-11/12 w-full'
         } bg-[#E8F1FF]`}
       >
-        <header>
+        <header className="w-full px-5">
           <Header isOpen={isOpen} setIsOpen={setIsOpen} />
         </header>
-        <section className="w-[90%] mx-auto">
+        <section className="w-full mx-auto px-5 overflow-y-auto">
           <Outlet />
         </section>
         <footer className="bg-[#154DA6]">
@@ -32,7 +30,7 @@ function MainLayout() {
         </footer>
       </main>
     </div>
-  );
+  )
 }
 
-export default MainLayout;
+export default MainLayout

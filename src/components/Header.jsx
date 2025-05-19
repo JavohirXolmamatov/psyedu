@@ -6,7 +6,7 @@ function Header({ setIsOpen, isOpen }) {
   const navigate = useNavigate();
 
   return (
-    <div className=" my-8 w-[90%] mx-auto">
+    <div className=" my-8 mx-auto">
       <div className="bg-white h-[90px]   rounded-3xl shadow-xl flex items-center px-5">
         <IoMdMenu
           className={`size-8 block md:hidden`}
