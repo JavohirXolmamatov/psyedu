@@ -6,3 +6,5 @@ export { default as Sertificate } from "./Sertificate";
 export { default as BeginnerTest } from "./BeginnerTest";
 export { default as RegularTest } from "./RegularTest";
 export { default as LastTest } from "./LastTest";
+export { default as Login } from "./Login";
+export { default as Register } from "./Register";

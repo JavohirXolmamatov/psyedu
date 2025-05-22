@@ -4,7 +4,10 @@ import { IoMdMenu } from "react-icons/io";
 
 function Header({ setIsOpen, isOpen }) {
   const navigate = useNavigate();
-
+  const logoutHandler = () => {
+    localStorage.removeItem("access_token");
+    navigate("/login");
+  };
   return (
     <div className=" my-8 mx-auto">
       <div className="bg-white h-[90px]   rounded-3xl shadow-xl flex items-center px-5">
@@ -13,6 +16,12 @@ function Header({ setIsOpen, isOpen }) {
           onClick={() => setIsOpen(!isOpen)}
         />
         <div className="size-14 rounded-full ml-auto bg-red-200"></div>
+        <button
+          className="cursor-pointer mr-7 px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 transition"
+          onClick={logoutHandler}
+        >
+          Logout
+        </button>
       </div>
       <div
         className="inline-flex my-8 items-center gap-2 select-none"
