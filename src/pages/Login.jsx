@@ -1,3 +1,4 @@
+import { Button } from "antd";
 import { useEffect, useState } from "react";
 import { IoEyeOffOutline, IoEyeOutline } from "react-icons/io5";
 import { Link, useNavigate } from "react-router";
@@ -5,7 +6,7 @@ import { toast } from "react-toastify";
 import api from "../service/api";
 
 const Login = () => {
-  const [isPasswordHidden, setIsPasswordHidden] = useState(false);
+  const [isPasswordHidden, setIsPasswordHidden] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
 
@@ -60,6 +61,7 @@ const Login = () => {
               Telefon Raqami:
             </label>
             <input
+              required
               type="tel"
               id="phone"
               name="phone"
@@ -75,6 +77,8 @@ const Login = () => {
             </label>
             <div className="relative">
               <input
+                required
+                autoComplete="off"
                 type={isPasswordHidden ? "password" : "text"}
                 name="password"
                 id="password"
@@ -84,16 +88,18 @@ const Login = () => {
                 className="absolute right-4 text-xl text-gray-500 font-bold top-[50%] translate-y-[-50%] cursor-pointer"
                 onClick={() => setIsPasswordHidden((i) => !i)}
               >
-                {isPasswordHidden ? <IoEyeOutline /> : <IoEyeOffOutline />}
+                {isPasswordHidden ? <IoEyeOffOutline /> : <IoEyeOutline />}
               </span>
             </div>
           </div>
-          <button
-            disabled={isLoading}
-            className="mb-3 w-full h-9 cursor-pointer font-semibold text-sm md:text-base rounded-[6px] text-white bg-[#2563eb] disabled:bg-gray-400 disabled:cursor-progress"
+          <Button
+            type="primary"
+            htmlType="submit"
+            loading={isLoading}
+            className="w-full mb-3 !bg-blue-600 hover:!bg-blue-700 !font-semibold !text-white !rounded-md px-6 py-2"
           >
-            {isLoading ? "Loading..." : "Kirish"}
-          </button>
+            Kirish
+          </Button>
           <Link
             to={"/register"}
             className="block text-sm text-center text-[#257efa] hover:text-[#69b1ff] cursor-pointer transition-colors duration-300"
