@@ -16,7 +16,7 @@ export default function RegionSelector({
   }, []);
 
   return (
-    <div className="max-w-sm">
+    <div className="w-full">
       <Select
         showSearch
         allowClear
