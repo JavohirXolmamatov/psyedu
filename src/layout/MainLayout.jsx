@@ -1,9 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Footer, Header, Navbar } from "../components";
 import { Outlet, useNavigate } from "react-router";
+import api from "../service/api";
+import { UserContext } from "../context/userContext";
 
 function MainLayout() {
+  const { setUser } = useContext(UserContext);
   const [isOpen, setIsOpen] = useState(true);
+
+  /*** check access token ***/
   const access_token = localStorage.getItem("access_token");
   const navigate = useNavigate();
   useEffect(() => {
@@ -11,6 +16,16 @@ function MainLayout() {
       navigate("/login");
     }
   }, [access_token, navigate]);
+
+  useEffect(() => {
+    if (access_token) {
+      api.get("auth/me").then((data) => {
+        if (data.statusText == "OK") {
+          setUser(data.data);
+        }
+      });
+    }
+  }, []);
 
   return (
     <div className="w-full flex relative overflow-hidden h-screen">
