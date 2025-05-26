@@ -1,9 +1,12 @@
 import { FaChevronLeft } from "react-icons/fa6";
 import { useNavigate } from "react-router";
 import { IoMdMenu } from "react-icons/io";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { UserContext } from "../context/userContext";
 
 function Header({ setIsOpen, isOpen }) {
+  const { user } = useContext(UserContext);
+
   const [isOpenModal, setIsOpenModal] = useState(false);
 
   const navigate = useNavigate();
@@ -30,16 +33,18 @@ function Header({ setIsOpen, isOpen }) {
             onClick={() => setIsOpenModal((e) => !e)}
           />
           {isOpenModal && (
-            <div className="block absolute z-101 right-1 top-14 p-2.5 rounded-md bg-[#e8f1ff] text-black sm:w-2xs w-48 shadow-[0px_2px_4px_rgba(41,100,194,0.1),-1px_6px_6px_rgba(41,100,194,0.09),-3px_14px_9px_rgba(41,100,194,0.05),-5px_25px_10px_rgba(41,100,194,0.01),-8px_39px_11px_rgba(41,100,194,0)]">
+            <div className="block absolute z-101 right-0 top-13 p-2.5 rounded-md bg-[#e8f1ff] text-black sm:w-60 w-48 shadow-[0px_2px_4px_rgba(41,100,194,0.1),-1px_6px_6px_rgba(41,100,194,0.09),-3px_14px_9px_rgba(41,100,194,0.05),-5px_25px_10px_rgba(41,100,194,0.01),-8px_39px_11px_rgba(41,100,194,0)]">
               <div className="flex items-start justify-between">
-                <div className="flex sm:flex-row flex-col items-start sm:items-center gap-1 sm:gap-2 sm:mb-6 mb-4">
+                <div className="flex sm:flex-row flex-col items-start sm:items-center gap-1 sm:gap-2 mb-4">
                   <img
-                    width={49}
-                    height={49}
+                    width={42}
+                    height={42}
                     alt="user icon"
                     src="/img/user.png"
                   />
-                  <p className="sm:text-lg text-base">Azizbek Kenjayev</p>
+                  <p className="text-lg sm:text-xl font-semibold sm:font-bold">
+                    {user.firstName} {user.lastName}
+                  </p>
                 </div>
                 <svg
                   onClick={() => setIsOpenModal(false)}
@@ -90,7 +95,7 @@ function Header({ setIsOpen, isOpen }) {
         {isOpenModal && (
           <div
             onClick={() => setIsOpenModal(false)}
-            className="absolute inset-0 z-100 bg-[#00000092]"
+            className="absolute inset-0 z-100 bg-[#00000075]"
           ></div>
         )}
       </div>

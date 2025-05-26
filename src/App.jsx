@@ -16,6 +16,7 @@ import {
   Results,
   Sertificate,
 } from "./pages";
+import { UserProvider } from "./context/userContext";
 
 function App() {
   const access_token = localStorage.getItem("access_token");
@@ -23,7 +24,7 @@ function App() {
   useEffect(() => {}, [access_token, navigate]);
 
   return (
-    <>
+    <UserProvider>
       <ToastContainer />
 
       <Routes>
@@ -56,7 +57,7 @@ function App() {
           }
         />
       </Routes>
-    </>
+    </UserProvider>
   );
 }
 
